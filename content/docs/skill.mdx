@@ -1,0 +1,115 @@
+Uma instrução geral, reutilizável, que ensina qualquer IA a trabalhar dentro do kit. Cole no início de cada conversa (versão resumida) ou carregue como skill nas ferramentas compatíveis (versão completa).
+
+## Versão completa
+
+Para tarefas complexas: adaptar uma marca, criar componentes, montar fluxos. Cada bloco pode ser copiado separadamente.
+
+<Prompt title="Skill geral do Norden UI KIT (completa)">
+
+```
+## Papel
+Você está trabalhando com o Norden UI KIT, o design system base de
+e-commerce do time (VTEX/FastStore), no Figma. Seu trabalho é adaptar,
+expandir e usar o kit sem quebrar sua arquitetura.
+
+## Antes de qualquer alteração
+1. Leia esta instrução inteira e a documentação do kit.
+2. Inspecione o arquivo: collections de variáveis (Brand, Primitives,
+   Color, Shape, Dimension, Responsive, Prototype), text styles,
+   effect styles e componentes da página Componentes.
+3. Confirme que o arquivo é uma cópia do kit para o projeto.
+   O arquivo base nunca é editado por um projeto.
+4. Apresente um plano: o que vai reaproveitar, o que vai criar,
+   e as dúvidas. Espere aprovação quando houver decisão em aberto.
+
+## Arquitetura (preserve)
+- Brand guarda os valores da marca. Color, Shape, Dimension e
+  Responsive guardam tokens com função. Componentes usam só tokens
+  com função; nunca hex nem números soltos.
+- Nomes: componentes Categoria/Nome em inglês; peças internas com _;
+  variantes Propriedade=Valor; tokens funcao/detalhe;
+  text styles Grupo/Tamanho/Peso · tamanho/altura.
+- Ícones só da biblioteca Phosphor Icons (Outline, Regular; Fill no
+  estado ativo), trocados por instance swap e pintados com icon/*.
+- Auto layout em todos os níveis, com gaps e paddings em spacing/*.
+
+## Reutilização
+- Procure um componente existente antes de criar qualquer coisa.
+- Se faltar um detalhe, amplie o componente existente (variante,
+  boolean, text property, instance swap) em vez de duplicar.
+- Configure instâncias pelas propriedades. Não destaque instâncias.
+
+## Regras de design do kit
+- Botões: Default, Hover (só desktop, tom mais escuro) e Disabled.
+- Texto de campos de formulário sempre em 16px.
+- Contraste AA (4,5:1) para texto; exceções precisam ser registradas.
+- Conteúdo real: use textos, preços e regras fornecidos.
+  Não invente dados comerciais.
+
+## Documentação obrigatória
+- Todo componente criado ou alterado precisa ter o campo
+  Component information (descrição) preenchido: o que é e quando
+  usar, o que cada variante muda, propriedades não óbvias,
+  peças expostas, interações e regras.
+
+## Honestidade
+- Não invente componentes, variantes, tokens ou regras.
+- Diferencie o que já existe do que você está propondo.
+- Se faltar contexto essencial, pergunte antes de executar.
+
+## Entrega
+- Explique o que mudou, onde, e o impacto esperado.
+- Mostre prints do resultado.
+- Valide: nenhuma cor sem variável, todo texto com estilo,
+  instâncias ligadas, descrição preenchida.
+- Liste pendências e o que precisa de aprovação.
+```
+
+</Prompt>
+
+## Versão resumida
+
+Para o dia a dia: ajustes pontuais, dúvidas, revisões rápidas.
+
+<Prompt title="Skill geral do Norden UI KIT (resumida)">
+
+```
+Use o Norden UI KIT como fonte de verdade.
+Antes de alterar, inspecione o arquivo e me mostre um plano.
+Só tokens (nada de hex), só text styles, ícones Phosphor,
+auto layout com spacing/*. Reaproveite e amplie componentes
+existentes; não duplique, não destaque instâncias.
+Preencha a descrição de todo componente que criar ou alterar.
+Não invente nada; pergunte quando faltar contexto.
+No final: prints, lista do que mudou e pendências.
+```
+
+</Prompt>
+
+## Como usar em cada ferramenta
+
+| Ferramenta | Como fornecer a skill |
+| --- | --- |
+| Claude (skills) | Existe a skill `norden-ui-kit` empacotada, com referências de tokens, componentes, mapeamento de wireframe e um script de paleta de cores. Instale pelo arquivo .skill. <Badge kind="impl">Disponível</Badge> |
+| Outras IAs de chat | Cole a versão completa como primeira mensagem ou nas instruções do projeto/espaço de trabalho. |
+| Agente de IA dentro do Figma | Cole a versão resumida e escreva nomes de tokens e estilos por extenso no pedido. |
+| IAs que geram código | Cole a versão completa e acrescente: “converta tokens em variáveis CSS com o mesmo nome”. |
+
+<Callout kind="warn" title="Nem toda ferramenta lê arquivos ou acessa o Figma">
+
+Algumas só veem o que você cola na conversa. Nesses casos, inclua os nomes dos componentes e tokens relevantes no próprio pedido, ou anexe prints com as propriedades visíveis.
+
+</Callout>
+
+## Manter a skill sincronizada
+
+1. Toda versão nova do kit (ex.: v0.5) gera uma revisão da skill.
+2. Componentes novos entram no inventário da skill e nesta documentação no mesmo dia.
+3. Regras novas (como a documentação obrigatória) entram primeiro aqui, com o selo da versão, e depois na skill.
+4. A skill empacotada é atualizada a partir do texto desta página.
+
+<Callout kind="pending" title="Planejado">
+
+Uma skill específica para gestão do UI KIT (para qualquer IA que assuma a manutenção do kit) está no backlog, com todos os guidelines detalhados. <Badge kind="prop">Backlog C42</Badge>
+
+</Callout>

@@ -1,0 +1,78 @@
+## Por que existe
+
+É o componente mais repetido de uma loja e o que mais gerava retrabalho entre projetos. Reúne imagem, selos, favoritar, nome, preço e ação de compra com todas as variações comuns.
+
+## Decisões a preservar
+
+- Estados de negócio, não visuais: Default, Sale, Unavailable.
+- Três formatos de CTA: Full, Compact e None.
+- Peças internas expostas: tudo se configura pelo painel, sem desmontar o card.
+- Nome com no máximo 2 linhas e reticências; imagem com proporção travada.
+
+## Anatomia
+
+1. Mídia (\_Product Card Media): imagem, tag e favoritar.
+2. Marca (opcional) e nome.
+3. Price Block MD.
+4. CTA: Button (Full) ou Icon Button (Compact).
+5. Chip “Mais opções” (Show options).
+
+## Tokens e estilos
+
+- `surface/default`, `surface/media`, `border/default`
+- `radius/card`, `radius/media`
+- Tokens do Price Block, Tag e Button
+
+## Quando usar
+
+- Vitrines, PLP e busca em grade.
+- Sale quando há preço original e desconto.
+- Unavailable para produto sem estoque.
+
+### Quando evitar
+
+- Cards de tamanhos diferentes na mesma grade.
+- Trocar a imagem destacando a instância (troque o fill da camada Image).
+
+## Acessibilidade
+
+- Área de toque do CTA com pelo menos 40px.
+- Indisponibilidade comunicada por texto, não só pela imagem esmaecida.
+
+## Erros comuns
+
+- Esticar o card sem respeitar a proporção da imagem.
+- Ligar Sale sem preencher o preço original.
+
+## Com IA
+
+<Prompt title="Montar uma vitrine de 4 produtos">
+
+```
+No frame [link], monte uma vitrine horizontal com 4 instâncias de
+Commerce/Product Card (State=Default, CTA=Full), gap spacing/16.
+Use os produtos do anexo: nome, preço e imagem.
+O segundo produto está em promoção: State=Sale com preço original
+e tag de desconto do anexo.
+Configure tudo pelas propriedades e instâncias expostas.
+```
+
+</Prompt>
+
+<Prompt title="Criar um estado novo sem duplicar o card">
+
+```
+Preciso de um estado “Pré-venda” no Commerce/Product Card do arquivo [link].
+Antes de criar, avalie se dá para resolver com o que existe
+(Tag Type=New ou Promo + texto do botão).
+Só se não der, proponha o valor novo em State, com as mesmas
+peças expostas das outras variantes. Mostre o plano antes.
+```
+
+</Prompt>
+
+## Como validar
+
+- Todas as variantes com as mesmas peças expostas.
+- Nome trunca em 2 linhas.
+- Imagem mantém proporção.

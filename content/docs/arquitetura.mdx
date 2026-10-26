@@ -1,0 +1,52 @@
+O kit é organizado em camadas. Cada camada só conversa com a vizinha, e é isso que permite trocar a marca sem tocar nos componentes.
+
+<Layers>
+<Layer title="Brand">Os valores da marca: cores (primary, secondary, accent, neutral, feedback) e fontes. É a única collection editada a cada projeto.</Layer>
+<Layer title="Color, Shape, Dimension, Responsive">Tokens com função: “texto principal”, “fundo do botão primário”, “raio do card”, “margem da página”. Apontam para os valores da Brand ou de Primitives.</Layer>
+<Layer title="Componentes">Usam somente os tokens com função. Nunca um hex, nunca um número solto.</Layer>
+<Layer title="Telas e fluxos">Montadas com instâncias dos componentes, configuradas pelas propriedades.</Layer>
+</Layers>
+
+## Collections do arquivo
+
+| Collection | Modes | Para que serve |
+| --- | --- | --- |
+| Brand | Norden Default | 46 variáveis de entrada da marca: cores e família/pesos de fonte. Sem escopo: não aparecem nos seletores, para ninguém aplicar direto. |
+| Primitives | Value | Valores crus que não mudam por marca: preto com transparência (sombras e scrim) e a escala de raios. Oculta da publicação. |
+| Color | Light | Tokens semânticos de cor, agrupados por função: text, icon, background, surface, border, commerce, overlay, shadow. |
+| Shape | 10px, None, 6px, 16px, 24px, Full | Raio por tipo de componente. Cada mode é um preset; o primeiro é o padrão do arquivo. |
+| Dimension | Value | Escala de espaçamento (grade de 4) e alturas de controles. |
+| Responsive | Mobile, Tablet, Desktop | Largura da tela, margem lateral, espaço do header e tamanhos de título que mudam por breakpoint. |
+| Prototype | Empty, With items | Variáveis do protótipo: quantidade do carrinho e se ele tem itens. |
+
+## Páginas do arquivo
+
+| Página | Conteúdo |
+| --- | --- |
+| Capa | Capa do arquivo. |
+| Começe por aqui | Introdução, versão (hoje v0.4 Beta) e changelog. |
+| Style guide | Foundations documentadas visualmente. |
+| Componentes | Biblioteca organizada em seções: Actions, Commerce, Forms, Brand, Navigation, Layout, Feedback. |
+| Layout Mobile e Layout Desktop | Telas e fluxos. Componentes com interações de navegação (Header, menu, drawers) ficam aqui. |
+| Layout Institucionais e E-mails transacionais | Páginas criadas, ainda sem conteúdo definido. <Badge kind="pend" /> |
+| Descartado | Referências antigas, mantidas só para consulta. |
+
+## Convenções de nomenclatura
+
+- Componentes: `Categoria/Nome` em inglês (ex.: `Commerce/Product Card`). Peças internas começam com `_` (ex.: `_Product Card Media`).
+- Variantes: `Propriedade=Valor` (ex.: `State=Sale, CTA=Full`).
+- Tokens: função primeiro, depois detalhe (ex.: `background/button/primary/hover`, `text/secondary`).
+- Text styles: `Grupo/Tamanho/Peso · tamanho/altura` (ex.: `Body/Medium/Regular · 16/24`).
+- Textos de conteúdo nos componentes em português; nomes técnicos em inglês.
+
+## Mapa de um projeto novo
+
+1. Duplicar o arquivo base e renomear para o cliente.
+2. Aplicar a marca na collection Brand.
+3. Escolher o preset de raio e ajustar o layout.
+4. Trocar logo e assets.
+5. Validar contraste e componentes.
+6. Montar telas a partir do wireframe.
+7. Validar, documentar decisões e preparar o handoff.
+
+O detalhe de cada etapa está em [Processo de um novo projeto](/processo).

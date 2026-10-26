@@ -1,0 +1,60 @@
+## Por que existe
+
+O header concentra os caminhos mais usados: menu, busca, conta e carrinho. Ele precisa ser consistente em todas as telas e funcionar no protótipo.
+
+## Decisões a preservar
+
+- Logo é instância de Brand/Logo: troca de marca em um só lugar.
+- Menu é um slot (instance swap) à esquerda.
+- Carrinho é o Commerce/Cart Button, com badge ligado às variáveis do protótipo.
+- Fica na página Layout Mobile porque abre o menu como overlay.
+
+## Anatomia
+
+1. Barra de status (iOS).
+2. Barra principal: slot de menu, logo, ícones de ação e Cart Button.
+3. Search Bar (Show Searchbar).
+
+## Tokens e estilos
+
+- `surface/default`, `border/default`
+- Tokens do Cart Button e do Search Bar
+
+## Quando usar
+
+- Em todas as telas da loja; State2 no checkout (sem distrações).
+
+### Quando evitar
+
+- Recriar o header por tela: use a instância e as propriedades.
+
+## Acessibilidade
+
+- Ícones com área de toque de pelo menos 40px.
+- Badge do carrinho com contraste AA.
+
+## Erros comuns
+
+- Perder o link do overlay do menu ao duplicar telas.
+- Esquecer de ajustar `layout/header-padding-top` quando o header muda de altura.
+
+## Com IA
+
+<Prompt title="Adaptar o header para um projeto">
+
+```
+No Header da cópia [link]:
+1. Confirme que o logo é instância de Brand/Logo (não imagem solta).
+2. Mantenha o slot de menu e o Cart Button.
+3. Meça a altura final do header em cada estado e atualize
+   layout/header-padding-top na collection Responsive.
+Liste o que mudou.
+```
+
+</Prompt>
+
+## Como validar
+
+- Logo trocado pelo Brand/Logo.
+- Menu abre o overlay.
+- Badge acompanha o protótipo.

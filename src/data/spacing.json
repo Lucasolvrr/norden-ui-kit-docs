@@ -1,0 +1,62 @@
+[
+ [
+  "0",
+  "Elementos colados."
+ ],
+ [
+  "2",
+  "Ajuste fino: padding vertical de tags."
+ ],
+ [
+  "4",
+  "Ícone e texto em elementos pequenos; label e campo."
+ ],
+ [
+  "8",
+  "Ícone e texto em botões; itens próximos."
+ ],
+ [
+  "12",
+  "Padding de cards e tags maiores; gap no card."
+ ],
+ [
+  "16",
+  "Padding padrão de componentes; margem lateral no mobile."
+ ],
+ [
+  "20",
+  "Padding de containers médios (drawers, modais no mobile)."
+ ],
+ [
+  "24",
+  "Gap entre cards de uma vitrine; padding de modais no desktop."
+ ],
+ [
+  "32",
+  "Espaço entre blocos de uma seção."
+ ],
+ [
+  "40",
+  "Blocos maiores; separação de seções no mobile."
+ ],
+ [
+  "48",
+  "Separação de seções."
+ ],
+ [
+  "64",
+  "Separação de seções no desktop."
+ ],
+ [
+  "80",
+  "Respiro de banners e hero."
+ ],
+ [
+  "96",
+  "Respiro de destaque no desktop."
+ ],
+ [
+  "128",
+  "Grandes respiros; uso raro."
+ ]
+]

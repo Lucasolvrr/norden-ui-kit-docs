@@ -1,0 +1,91 @@
+## Por que existe
+
+Toda tela de loja tem uma ação principal (comprar, adicionar, finalizar) e ações de apoio. O botão padroniza altura, área de toque, hierarquia visual e estados, para o cliente reconhecer a ação principal sem pensar.
+
+## Decisões a preservar
+
+- Três níveis de ênfase: Primary (fundo na cor da marca), Secondary (contorno), Tertiary (só texto).
+- Só três estados: Default, Hover (desktop, tom mais escuro) e Disabled. Sem Focus e Pressed, por decisão de projeto.
+- Alturas ligadas a `size/control/*`: SM 40, MD 48, LG 56.
+- Ícone e texto usam o mesmo token, para nunca ficarem com cores diferentes.
+
+## Anatomia
+
+1. Container: auto layout horizontal, altura `size/control/*`, raio `radius/button`.
+2. Ícone à esquerda (opcional, Phosphor).
+3. Label: estilo Button/Small, Medium ou Large.
+4. Ícone à direita (opcional).
+
+## Tokens e estilos
+
+- `background/button/primary/default` e `/hover`
+- `text/button/primary · secondary · tertiary · disabled`
+- `border/button/secondary/default` e `/hover`
+- `background/button/tertiary/hover`
+- `background/button/disabled`
+- `radius/button`, `size/control/*`
+
+## Quando usar
+
+- Primary: uma ação principal por área (adicionar ao carrinho, finalizar compra).
+- Secondary: ações alternativas (ver mais, salvar na lista).
+- Tertiary: ações leves (cancelar, limpar, links de ação).
+- LG no CTA principal da PDP e do checkout.
+
+### Quando evitar
+
+- Dois Primary lado a lado competindo pela atenção.
+- Botão só com ícone: use Actions/Icon Button.
+- Hover em telas mobile.
+
+## Acessibilidade
+
+- Label com contraste AA sobre o fundo (`primary/on-color` × `primary/default`).
+- Área de toque mínima de 40px; padrão 48px.
+- Foco por teclado ainda não tem estado próprio. <Badge kind="pend" />
+
+## Erros comuns
+
+- Mudar a cor do botão por override em vez de reapontar o token.
+- Destacar a instância para trocar o texto (use a propriedade Label).
+- Usar SM em ações principais no mobile: a área de toque fica pequena.
+
+## Com IA
+
+<Prompt title="Criar uma variante destrutiva sem duplicar o botão">
+
+```
+No Actions/Button do arquivo [link], adicione o valor Destructive
+à propriedade Variant, com os estados Default, Hover e Disabled
+nos tamanhos SM, MD e LG.
+- Fundo: proponha tokens novos background/button/destructive/default
+  e /hover apontando para feedback/error/default e um tom mais escuro.
+- Texto e ícone: text/button/primary.
+- Mantenha as propriedades Label e ícones ligadas como nas outras
+  variantes. Não altere as variantes existentes.
+- Atualize a descrição do componente.
+Mostre o plano antes de executar.
+```
+
+</Prompt>
+
+<Prompt title="Verificar o botão depois de trocar a marca">
+
+```
+Na página Componentes da cópia [link], tire print das 27 variantes
+do Actions/Button e confira:
+- Primary: label com contraste 4,5:1 sobre o fundo.
+- Hover mais escuro que o Default.
+- Secondary com contorno visível sobre branco.
+- Disabled perceptível, mas claramente inativo.
+Liste problemas por variante, sem corrigir.
+```
+
+</Prompt>
+
+## Como validar
+
+- Todas as cores aparecem como variáveis.
+- Label editável pela propriedade.
+- Hover mais escuro que o Default.
+- Alturas 40/48/56.

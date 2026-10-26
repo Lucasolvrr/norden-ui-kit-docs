@@ -1,0 +1,166 @@
+Ferramentas de IA conseguem ler arquivos do Figma, interpretar imagens e executar alterações. Mas elas não conhecem o kit: tudo o que sabem sobre ele vem do contexto que você fornece. Esta página ensina a dar esse contexto, pedir de forma verificável e conferir o resultado.
+
+## Antes de pedir: o contexto mínimo
+
+| Contexto | Por que importa | Como fornecer |
+| --- | --- | --- |
+| Arquivo de trabalho | A IA precisa saber onde alterar e que é uma cópia do kit, não o original. | Link do Figma do projeto (cópia do kit) e, se possível, do frame exato. |
+| Regras do kit | Sem regras, ela cria cores soltas, componentes duplicados e nomes fora do padrão. | A [skill geral](/skill) (ou a versão resumida colada no início do pedido). |
+| Referência visual | Mostra a intenção: o que existe na tela e em que ordem. | Wireframe, print ou link de referência. |
+| Conteúdo real | Evita textos e preços inventados. | Textos, produtos, preços e regras do cliente. |
+| Critério de pronto | Permite que a IA confira o próprio trabalho. | Lista do que precisa estar certo ao final. |
+
+## Prompts ruins e bons
+
+### Pedido vago
+
+<Compare>
+
+<CompareItem kind="bad" label="Ruim">
+
+```
+Faz uma página de produto bonita para a loja.
+```
+
+</CompareItem>
+
+<CompareItem kind="good" label="Melhor">
+
+```
+No arquivo [link], página Layout Mobile, crie a PDP mobile (393px)
+usando só componentes do kit: Header, Breadcrumb, galeria com
+_Product Card Media, Price Block Size=LG, Quantity Selector MD e
+Button Primary LG “Adicionar ao carrinho”. Textos do anexo.
+Não crie cores nem componentes novos; se faltar algo, me avise.
+```
+
+</CompareItem>
+
+</Compare>
+
+O pedido melhor diz onde, com o quê, com qual conteúdo e o que não fazer. A IA não precisa adivinhar.
+
+### Referência sem regra
+
+<Compare>
+
+<CompareItem kind="bad" label="Ruim">
+
+```
+Copia esse card do print.
+```
+
+</CompareItem>
+
+<CompareItem kind="good" label="Melhor">
+
+```
+Use o Commerce/Product Card existente. No print, o card tem tag
+de desconto, preço riscado e botão largo: isso é State=Sale e
+CTA=Full. Configure pelas propriedades; não desmonte a instância
+e não copie as cores do print (vêm dos tokens).
+```
+
+</CompareItem>
+
+</Compare>
+
+### Correção que destrói o resto
+
+<Compare>
+
+<CompareItem kind="bad" label="Ruim">
+
+```
+O botão está errado, refaz.
+```
+
+</CompareItem>
+
+<CompareItem kind="good" label="Melhor">
+
+```
+No Actions/Button, a variante Secondary Hover está com borda
+cinza; deveria usar border/button/secondary/hover. Corrija só
+essa variante e me mostre um print antes e depois.
+```
+
+</CompareItem>
+
+</Compare>
+
+## Divida tarefas grandes
+
+Peça uma etapa por vez e confira antes de seguir. Um fluxo seguro para quase tudo:
+
+1. **Diagnóstico:** “Leia o arquivo e me diga o que existe e o que falta. Não altere nada.”
+2. **Plano:** “Liste o que vai criar, o que vai reaproveitar e as dúvidas.”
+3. **Execução por partes:** uma tela, um componente ou um grupo de tokens por vez.
+4. **Validação:** print do resultado e checklist.
+5. **Ajustes pontuais:** correções com escopo fechado.
+
+## Como conferir o resultado
+
+- Clique nas cores: precisam aparecer como variáveis, nunca como hex.
+- Clique nos textos: precisam ter um text style aplicado.
+- Verifique se as instâncias continuam ligadas ao componente (não destacadas).
+- Compare com a referência: ordem dos elementos, textos e estados.
+- Teste o protótipo quando houver interações.
+
+## Sinais de alucinação
+
+A IA pode afirmar que fez algo que não fez, ou citar algo que não existe. Desconfie quando:
+
+- Ela menciona um componente, variante ou token que você não encontra no arquivo.
+- O relatório diz “tudo certo”, mas não mostra print nem lista o que mudou.
+- Aparecem nomes fora do padrão (ex.: `BotaoVermelho`, `color-1`).
+- Valores numéricos “redondos” demais para cores que deveriam vir do manual da marca.
+
+Peça sempre: “mostre o print e liste exatamente o que mudou”. E confira por amostragem.
+
+## Iterar sem recomeçar
+
+Quando algo sai errado, descreva o erro, o lugar e o resultado esperado, e limite o escopo. Recomeçar do zero costuma desfazer o que já estava certo.
+
+<Prompt title="Pedir uma correção com escopo fechado">
+
+```
+No frame [nome/link], o card do meio está com a tag “Novo”,
+mas no wireframe é desconto de 15%.
+Troque só a Tag desse card para Type=Discount e texto “-15%”.
+Não altere os outros cards nem o layout.
+Ao final, mostre um print do frame.
+```
+
+</Prompt>
+
+## Fazer a IA consultar a documentação primeiro
+
+<Prompt title="Abrir qualquer tarefa com consulta obrigatória">
+
+```
+Antes de executar, leia a skill do Norden UI KIT e inspecione o
+arquivo [link]: collections de variáveis, text styles e componentes.
+Depois me responda, sem alterar nada:
+1. Quais componentes e tokens você vai usar.
+2. O que precisaria ser criado (se algo).
+3. Que dúvidas você tem.
+Só execute depois que eu aprovar o plano.
+```
+
+</Prompt>
+
+## Diferenças entre ferramentas
+
+| Tipo de ferramenta | O que consegue | Como adaptar o pedido |
+| --- | --- | --- |
+| IA com acesso de escrita ao Figma (ex.: via MCP) | Ler e alterar variáveis, componentes e frames. | Pedidos completos, com etapas e validação por print. |
+| IA que só lê o Figma ou imagens | Analisar, mapear e escrever instruções. | Peça a análise e a lista de passos; você executa no Figma. |
+| IA que gera código | Criar HTML/CSS ou componentes de front. | Forneça os tokens (nomes e valores) e peça que use os mesmos nomes como variáveis CSS. |
+| Agente de IA dentro do Figma | Criar e editar camadas no arquivo aberto. | Prompts autocontidos, com nomes de tokens e estilos escritos por extenso. |
+
+<Callout kind="pending" title="Pendente de validação">
+
+A lista de ferramentas aprovadas pelo time e suas permissões (quem pode editar o arquivo base, quem só edita cópias) ainda não foi definida. <Badge kind="pend" />
+
+</Callout>

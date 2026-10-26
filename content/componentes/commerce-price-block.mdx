@@ -1,0 +1,64 @@
+## Por que existe
+
+O preço é a informação mais lida de uma loja e tem muitas formas: preço atual, original riscado, desconto, Pix, parcelamento. Um bloco único garante a mesma ordem e hierarquia em card, PDP e carrinho.
+
+## Decisões a preservar
+
+- Linhas independentes que somem sem deixar espaço vazio.
+- Três tamanhos por contexto: LG (PDP), MD (card), SM (minicart, carrinho, busca).
+- Preço riscado sempre em `commerce/price-old` (neutral/500, com AA).
+
+## Anatomia
+
+1. Linha 1: preço original riscado + desconto (opcionais).
+2. Linha 2: preço atual + sufixo (“à vista”).
+3. Selo de Pix (Tag exposta).
+4. Linha de parcelamento.
+
+## Tokens e estilos
+
+- `commerce/price`, `commerce/price-old`, `commerce/discount`
+- Text styles Price/Large, Medium, Small e Old
+
+## Quando usar
+
+- Configure as linhas pelas propriedades conforme o produto.
+- A linha Installments também serve para preço por unidade ou faixa de quantidade.
+
+### Quando evitar
+
+- Montar preço com textos soltos fora do componente.
+- Mostrar desconto sem preço original.
+
+## Acessibilidade
+
+- Preço riscado com contraste AA (neutral/500).
+- Não depender só do riscado: o desconto deve estar escrito.
+
+## Erros comuns
+
+- Deixar a linha de parcelamento ligada com texto de exemplo.
+- Usar o tamanho LG dentro de cards.
+
+## Com IA
+
+<Prompt title="Configurar o preço a partir do wireframe">
+
+```
+No card do frame [link], o wireframe mostra
+“De R$ 59,90 por R$ 47,92” e “ou 3x de R$ 15,97”.
+Configure o Price Block exposto do card:
+- Show old price ligado, Old price “R$ 59,90”
+- Price “R$ 47,92”
+- Show installments ligado com o texto do parcelamento
+- Show discount e Show Pix desligados
+Não altere outros cards.
+```
+
+</Prompt>
+
+## Como validar
+
+- Linhas desligadas não deixam espaço.
+- Tamanho certo para o contexto.
+- Valores vindos do conteúdo real.

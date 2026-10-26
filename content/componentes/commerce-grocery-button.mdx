@@ -1,0 +1,60 @@
+## Por que existe
+
+Em supermercados e atacarejos o cliente compra várias unidades e ajusta a quantidade direto no card. O botão vira seletor de quantidade sem levar a outra tela.
+
+## Decisões a preservar
+
+- Três estados de quantidade: 0 (Adicionar), 1 (lixeira, 1, +) e 2+ (−, n, +).
+- O número vem de variáveis de protótipo (`cart/quantity-label`), para o protótipo funcionar de verdade.
+- O Cart Button do header acompanha a quantidade.
+
+## Anatomia
+
+1. Estado 0: botão com ícone e “Adicionar”.
+2. Estados 1 e 2+: ação de remover/diminuir, número e “+”.
+
+## Tokens e estilos
+
+- `background/button/primary/*`, `text/button/primary`
+- Collection Prototype: `cart/quantity`, `cart/quantity-label`, `cart/has-items`
+
+## Quando usar
+
+- Cards de supermercado, atacarejo e farmácia.
+- Telas estáticas com quantidade: aplique o mode “With items” da collection Prototype no frame.
+
+### Quando evitar
+
+- Usar em produtos de compra unitária (moda, eletrônicos).
+
+## Acessibilidade
+
+- Botões de + e − com área de toque de pelo menos 32px.
+- Número legível com contraste AA.
+
+## Erros comuns
+
+- Duplicar variantes e esquecer de refazer as interações: as setas passam a apontar para variantes erradas.
+- Nomes de variante repetidos no set (o Figma marca erro e as trocas falham).
+
+## Com IA
+
+<Prompt title="Adicionar um tamanho sem quebrar as interações">
+
+```
+No Commerce/Grocery Button do arquivo [link], crie Size=LG
+(altura size/control/lg) para Quantity 0, 1 e 2+.
+Depois de criar, refaça as interações do grupo LG copiando as do
+grupo MD: Adicionar → 1; lixeira → 0; + no 1 → 2+; + no 2+ soma 1;
+− no 2+ volta para 1 se a quantidade for 2.
+Confirme que nenhum nome de variante ficou repetido e
+liste para onde cada interação aponta.
+```
+
+</Prompt>
+
+## Como validar
+
+- Nenhum nome de variante repetido.
+- Cada interação aponta para a variante do mesmo tamanho.
+- O badge do Cart Button acompanha no protótipo.

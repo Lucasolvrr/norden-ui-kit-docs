@@ -1,0 +1,68 @@
+{
+  "Actions/Button": [
+    "Actions/Icon Button",
+    "Commerce/Product Card",
+    "Marketing/Newsletter"
+  ],
+  "Commerce/Tag": [
+    "Commerce/Product Card",
+    "Commerce/Price Block"
+  ],
+  "Commerce/Price Block": [
+    "Commerce/Product Card",
+    "Commerce/Product Card Horizontal",
+    "Commerce/Tag"
+  ],
+  "Commerce/Product Card": [
+    "Commerce/Price Block",
+    "Commerce/Tag",
+    "Actions/Favorite Button",
+    "Actions/Button",
+    "Actions/Icon Button",
+    "Commerce/Grocery Button"
+  ],
+  "Commerce/Product Card Horizontal": [
+    "Commerce/Price Block",
+    "Commerce/Quantity Selector",
+    "Search/Search Panel"
+  ],
+  "Commerce/Grocery Button": [
+    "Commerce/Cart Button",
+    "Commerce/Quantity Selector",
+    "Commerce/Product Card"
+  ],
+  "Commerce/Cart Button": [
+    "Commerce/Grocery Button",
+    "Header"
+  ],
+  "Forms/Input": [
+    "Forms/Select",
+    "Search/Search Bar",
+    "Marketing/Newsletter"
+  ],
+  "Header": [
+    "Brand/Logo",
+    "Commerce/Cart Button",
+    "Search/Search Bar",
+    "Navigation/Menu Item"
+  ],
+  "Search/Search Panel": [
+    "Search/Search Bar",
+    "Search/Search Term",
+    "Commerce/Product Card Horizontal"
+  ],
+  "Footer/Footer": [
+    "Footer/Link Group",
+    "Marketing/Newsletter",
+    "Brand/Logo"
+  ],
+  "Forms/Filter Item": [
+    "Forms/Checkbox",
+    "Navigation/Accordion Item"
+  ],
+  "Navigation/Menu Item": [
+    "Navigation/Menu Header",
+    "Navigation/Menu Shortcut",
+    "Navigation/Accordion Item"
+  ]
+}

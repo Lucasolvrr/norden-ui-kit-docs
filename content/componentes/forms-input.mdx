@@ -1,0 +1,62 @@
+## Por que existe
+
+Campos aparecem em busca, login, cadastro, CEP e checkout. Padronizar estados e tamanhos reduz erros de preenchimento e abandono.
+
+## Decisões a preservar
+
+- Texto sempre em 16px (evita zoom automático no iOS).
+- Ícone à esquerda para busca; à direita para senha (olho).
+- Error troca o texto de apoio pela mensagem de erro.
+- Hover só no desktop.
+
+## Anatomia
+
+1. Label (opcional).
+2. Campo: ícones opcionais, texto, ícone de status em Success/Error.
+3. Texto de apoio ou mensagem de erro.
+
+## Tokens e estilos
+
+- `border/default`, `border/hover`, `border/focus`, `border/error`, `border/success`
+- `text/placeholder`, `text/error`
+- `radius/input`, `size/control/md`
+
+## Quando usar
+
+- Formulários, CEP, cupom, newsletter.
+- Mensagens de erro específicas (“CEP inválido”), nunca genéricas.
+
+### Quando evitar
+
+- Placeholder no lugar da label em formulários longos.
+- Texto menor que 16px.
+
+## Acessibilidade
+
+- Label visível ou associada.
+- Erro comunicado por texto e ícone, não só pela cor da borda.
+
+## Erros comuns
+
+- Mudar o tamanho da fonte do campo por override.
+- Usar Error sem preencher a mensagem.
+
+## Com IA
+
+<Prompt title="Montar o formulário de endereço">
+
+```
+No frame [link], monte o formulário de endereço do checkout com
+Forms/Input (Show label ligado): CEP, Rua, Número, Complemento,
+Bairro, Cidade e Estado (Forms/Select). Gap spacing/16.
+Mostre o CEP no estado Error com a mensagem “CEP não encontrado”.
+Não crie campos novos; use só Input e Select.
+```
+
+</Prompt>
+
+## Como validar
+
+- Texto em 16px.
+- Estados com tokens de borda corretos.
+- Mensagens de erro específicas.

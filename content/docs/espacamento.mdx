@@ -1,0 +1,71 @@
+Espaço, tamanho e forma seguem escalas fechadas. Isso dá ritmo às telas e evita a sensação de “quase alinhado”.
+
+## Escala de espaçamento
+
+Grade de 4. O nome do token é o valor em pixels. Use em gaps e paddings. <Badge kind="impl" />
+
+<SpacingScale />
+
+## Altura de controles
+
+| Token | Altura | Uso |
+| --- | --- | --- |
+| `size/control/xs` | 32 | Botões de ícone sobre imagens, quantidade do minicart. |
+| `size/control/sm` | 40 | Contextos densos do desktop: chips, ordenação. |
+| `size/control/md` | 48 | Padrão: botões, inputs, select, busca, quantidade. Área de toque confortável no mobile. |
+| `size/control/lg` | 56 | CTA principal da PDP e do checkout. |
+
+## Layout e breakpoints
+
+| Token (Responsive) | Mobile | Tablet | Desktop |
+| --- | --- | --- | --- |
+| `layout/viewport` | 393 | 768 | 1440 |
+| `layout/margin` | 16 | 32 | 40 |
+| `layout/header-padding-top` | 240 | 120 | 160 |
+
+As larguras seguem os breakpoints do FastStore. A margem é o padding lateral do frame de tela. O padding superior evita que o conteúdo fique embaixo do header, que fica sobreposto.
+
+<Callout kind="pending" title="Pendente de validação">
+
+Os valores de `layout/header-padding-top` são provisórios: precisam ser iguais à altura final do header em cada breakpoint. Também falta definir grid de colunas e largura máxima de conteúdo no desktop. <Badge kind="pend" />
+
+</Callout>
+
+## Raios (Shape)
+
+Cada tipo de componente tem seu token de raio, e cada mode da collection é um preset. Na cópia do projeto, escolha o preset e apague os outros: o que sobrar vira o padrão do arquivo. O nome do mode é o raio de botões e campos.
+
+| Token | 10px (padrão) | None | 6px | 16px | 24px | Full |
+| --- | --- | --- | --- | --- | --- | --- |
+| `radius/button` | 10 | 0 | 6 | 16 | 24 | pílula |
+| `radius/input` | 10 | 0 | 6 | 16 | 24 | pílula |
+| `radius/card` | 12 | 0 | 8 | 24 | 32 | 16 |
+| `radius/media` | 8 | 0 | 6 | 16 | 24 | 12 |
+| `radius/tag` | 6 | 0 | 4 | 8 | 12 | pílula |
+| `radius/checkbox` | 6 | 0 | 4 | 6 | 6 | 6 |
+| `radius/modal` | 16 | 0 | 12 | 32 | 32 | 24 |
+| `radius/circle` | círculo | círculo | círculo | círculo | círculo | círculo |
+
+Decisões: a mídia fica um degrau abaixo do card para acompanhar o padding interno; o checkbox fica sempre discreto para não parecer um radio; o círculo nunca muda.
+
+## Sombras (elevation)
+
+| Estilo | Composição | Uso |
+| --- | --- | --- |
+| `elevation/1` | y1 blur2 + y2 blur6 | Cards em hover (desktop) e header fixo ao rolar. |
+| `elevation/2` | y2 blur4 spread−1 + y8 blur16 spread−4 | Dropdowns, painel de busca, tooltips. |
+| `elevation/3` | y4 blur8 spread−2 + y20 blur40 spread−8 | Modais e drawers. |
+| `focus-ring` | spread 4 + spread 2 | Foco por teclado (anel duplo). |
+
+As cores das sombras vêm de `shadow/soft` e `shadow/strong`. Para sombras tingidas pela marca, aponte esses tokens para uma cor da marca com transparência.
+
+## Bordas
+
+Não há tokens de espessura: bordas são fixas em 1px; 2px em seleção e destaques. A cor vem sempre de `border/*`.
+
+## Erros comuns
+
+- Valores fora da escala (13, 15, 18px de gap).
+- Ajustar raio elemento por elemento em vez de escolher o preset.
+- Esquecer de aplicar o mode Mobile no frame de tela: títulos ficam no tamanho de desktop.
+- Sombra em tudo: reserve para elementos que realmente flutuam.

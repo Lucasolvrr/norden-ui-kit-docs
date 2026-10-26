@@ -1,0 +1,102 @@
+As cores do kit funcionam em duas camadas. A camada **Brand** guarda as cores da identidade do cliente. A camada **Color** dá uma função a cada cor: “texto principal”, “fundo do botão primário”, “preço riscado”. Os componentes só usam a camada Color.
+
+<Callout kind="info" title="Cor da marca × cor semântica">
+
+A cor da marca responde “qual é o vermelho da empresa?”. A cor semântica responde “qual cor usar no preço?”. Separar as duas permite trocar a marca inteira editando poucos valores, e permite mudar o papel de uma cor (ex.: preço em neutro) sem tocar na marca.
+
+</Callout>
+
+## Cores da marca (Brand)
+
+Cada cor de marca tem cinco papéis. Os valores abaixo são o padrão neutro do kit base, substituídos em cada projeto. <Badge kind="impl" />
+
+| Papel | Para que serve |
+| --- | --- |
+| `default` | A cor oficial do manual. |
+| `hover` | Tom mais escuro, usado no hover do desktop. Decisão do kit: hover sempre escurece. |
+| `subtle` | Tom bem claro para fundos suaves, seleção discreta e chips ativos. |
+| `text` | Versão com contraste AA (4,5:1) sobre branco: links, preço, ícones e contornos. Em marcas claras (amarelo, laranja) fica mais escura que o default. |
+| `on-color` | Texto e ícone aplicados sobre o default, como a label do botão. Precisa de AA com o default. |
+
+### Primary
+
+A cor de ação e identidade mais forte: botão primário, links, seleção, preço.
+
+<BrandColors group="primary" roles="default,hover,subtle,text,on-color" />
+
+### Secondary
+
+Segunda cor institucional: faixas, fundos de apoio, áreas de destaque que não competem com a ação principal.
+
+<BrandColors group="secondary" roles="default,hover,subtle,text,on-color" />
+
+### Accent
+
+Destaque comercial: tags de promoção e texto de desconto (via tokens `commerce/*`).
+
+<BrandColors group="accent" roles="default,hover,subtle,text,on-color" />
+
+### Neutral
+
+Escala de 50 a 950 para fundos, superfícies, bordas e textos. Regra do kit: **neutral/500 é o primeiro tom com AA sobre branco e sobre neutral/50**, por isso é usado em texto terciário e preço riscado.
+
+<BrandColors group="neutral" roles="50,100,200,300,400,500,600,700,800,900,950" />
+
+### Feedback
+
+Sucesso, atenção, erro e informação, cada um com default (ícones e bordas), subtle (fundos) e text (textos com AA). São neutros em relação à marca: só mudam se conflitarem com ela.
+
+<MiniTitle>success</MiniTitle>
+
+<BrandColors group="feedback/success" roles="default,subtle,text" />
+
+<MiniTitle>warning</MiniTitle>
+
+<BrandColors group="feedback/warning" roles="default,subtle,text" />
+
+<MiniTitle>error</MiniTitle>
+
+<BrandColors group="feedback/error" roles="default,subtle,text" />
+
+<MiniTitle>info</MiniTitle>
+
+<BrandColors group="feedback/info" roles="default,subtle,text" />
+
+## Tokens semânticos (Color)
+
+São 85 tokens agrupados por função. Cada um aponta para uma cor da Brand. Clique num nome para copiar.
+
+<ColorTokens />
+
+## Estados de interação
+
+| Estado | Como o kit resolve |
+| --- | --- |
+| Hover | Só no desktop. Botões escurecem (`*/hover`); campos ganham borda escura (`border/hover`); itens de lista usam `surface/hover`. |
+| Focus | Existe o effect style `focus-ring` e o token `border/focus`. Os botões do kit não têm estado Focus por decisão de projeto. <Badge kind="pend">Revisar acessibilidade de teclado</Badge> |
+| Pressed | Não há estado Pressed nos botões. Itens de lista e menu usam `surface/pressed`. |
+| Disabled | Fundo `background/disabled` ou `background/button/disabled`, texto `text/disabled`. Texto desabilitado é isento de contraste mínimo, mas precisa ser perceptível. |
+| Selected | `background/selected` e `border/selected` para controles marcados; `background/selected-subtle` para seleção suave. |
+
+## Por que isso importa no e-commerce
+
+- **Hierarquia de compra:** o botão primário é a única coisa com a cor mais forte da tela; preço e desconto têm tokens próprios para se destacarem sem competir com o CTA.
+- **Confiança:** estados de erro e sucesso consistentes em todo o funil (campo, carrinho, checkout).
+- **Legibilidade:** textos com AA garantem leitura de preço, parcelamento e prazos, inclusive em telas pequenas e ao sol.
+
+## Erros comuns
+
+- Pintar com hex direto no componente. Sempre use um token.
+- Usar a cor da marca como texto quando ela não passa contraste. Use `primary/text` (via `text/brand`).
+- Trocar tudo pela cor primária: tags, preço, botões e faixas na mesma cor apagam a hierarquia.
+- Recolorir sucesso e erro com as cores da marca sem necessidade.
+
+## Simulador de cor da marca
+
+Teste uma cor primária e veja os cinco papéis que o kit precisa, com o contraste de cada um. É a mesma lógica do script de paleta usado no tutorial de adaptação. <Badge kind="rec">Ferramenta de apoio</Badge>
+
+<BrandSimulator />
+
+## Adaptando para uma nova marca
+
+Exemplo real: na adaptação da marca Stok Center (vermelho #ED1D24, grafite #414042, amarelo #FFF200), o amarelo virou `accent` e precisou de uma versão de texto escurecida (#797300), porque amarelo puro não tem contraste sobre branco. O vermelho com texto branco ficou em 4,37:1 e foi aceito como decisão de marca, documentada.

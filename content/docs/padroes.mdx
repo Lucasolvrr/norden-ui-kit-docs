@@ -1,0 +1,72 @@
+Padrões são combinações de componentes que resolvem uma parte da loja. Esta página mostra o que já existe no kit para cada padrão e o que ainda falta.
+
+| Padrão | Componentes envolvidos | Situação |
+| --- | --- | --- |
+| Cabeçalho e navegação | Header (logo, slot de menu, Cart Button, Search Bar), Menu Item, Menu Shortcut, Menu Header, frames Menu e Submenu | <Badge kind="impl" /> |
+| Busca | Search Bar (Default, Focused, Typing) + Search Panel (Suggestions, Results, No results) + Search Term | <Badge kind="impl" /> |
+| Cards de produto | Product Card vertical (Default, Sale, Unavailable × CTA) e Product Card Horizontal (Minicart, Cart, Search) | <Badge kind="impl" /> |
+| Listagens e grids | Product Card em grid; largura definida pelo grid. Regras de colunas por breakpoint | <Badge kind="pend" /> |
+| Filtros e ordenação | Filter Item, Checkbox, Chip, Accordion; filtros Departamento/Simples/Preço e drawer Filtrar na página Layout Mobile | <Badge kind="impl" /> <Badge kind="pend">Mover para Componentes</Badge> |
+| Página de produto (PDP) | Price Block LG, Quantity Selector, Button LG, Accordion para descrições | <Badge kind="pend">Sem padrão montado no kit</Badge> |
+| Carrinho e minicart | Product Card Horizontal (Minicart, Cart), Quantity Selector, Grocery Button, Cart Button | <Badge kind="impl" /> |
+| Formulários | Input, Select, Checkbox, Toggle | <Badge kind="impl" /> <Badge kind="pend">Sem Textarea e Radio</Badge> |
+| Modais e drawers | Frames Drawer, Pop-up e Filtrar na página Layout Mobile, com overlay/scrim e elevation/3 | <Badge kind="impl" /> |
+| Mensagens de feedback | Toast (Success, Error, Warning, Info) | <Badge kind="impl" /> |
+| Banners promocionais | Faixas de benefícios, brinde e frete grátis na página Layout Mobile | <Badge kind="pend">Sem documentação</Badge> |
+| Checkout | Ainda não existe no kit | <Badge kind="prop">No backlog</Badge> |
+| Estados vazios, carregamento e erro | Search Panel “No results”; Input Error. Skeleton e empty states gerais não existem | <Badge kind="prop">No backlog</Badge> |
+
+## Regras de composição
+
+- Reaproveite componentes antes de desenhar qualquer coisa. Se falta um detalhe, amplie o componente (nova variante ou propriedade) em vez de criar outro parecido.
+- Telas: frame com auto layout vertical, largura ligada a `layout/viewport`, margem `layout/margin` e o mode Responsive do breakpoint aplicado ao frame.
+- Seções separadas por `spacing/32`–`48` no mobile e `48`–`64` no desktop.
+- Drawers e modais: `overlay/scrim` por trás, `elevation/3`, raio `radius/modal` (no bottom sheet, só nos cantos de cima).
+- Componentes com interação de navegação (Header, menu, drawers) ficam na página de layout, não na página Componentes.
+
+## Montar uma tela a partir do wireframe
+
+<Prompt title="Montar a PLP mobile com componentes do kit">
+
+```
+## Contexto
+Arquivo: [link da cópia do kit]. Wireframe anexo.
+Leia a skill do Norden UI KIT antes de começar.
+
+## Tarefa
+Monte a PLP mobile (393px) na página Layout Mobile, seguindo
+a ordem do wireframe. Use só componentes existentes:
+- Header (State=LoggedIn)
+- Navigation/Breadcrumb
+- Forms/Chip para ordenação (a opção ativa em Selected)
+- Commerce/Product Card em grid de 2 colunas (largura pelo grid)
+- Footer/Footer Device=Mobile
+
+## Regras
+- Configure tudo pelas propriedades; não destaque instâncias.
+- Textos e preços do wireframe; não invente conteúdo.
+- O que não tiver componente: monte com auto layout e tokens
+  e liste no final como candidato a componente.
+
+## Entrega
+Print da tela e lista: elemento do wireframe → componente usado.
+```
+
+</Prompt>
+
+## Mapa rápido: wireframe → componente
+
+| No wireframe | Use |
+| --- | --- |
+| Tag com “%” ou “OFF” | Commerce/Tag Type=Discount |
+| Tag “Novo” ou “Lançamento” | Commerce/Tag Type=New |
+| Campanha (“Frete grátis”) | Commerce/Tag Type=Promo |
+| “Esgotado” | Tag Type=Dark + card State=Unavailable |
+| “De R$ X por R$ Y” | Price Block com Show old price |
+| “ou 3x de R$…” | Price Block, linha Installments |
+| Botão largo no card | Product Card CTA=Full |
+| Ícone de carrinho ao lado do preço | Product Card CTA=Compact |
+| “− 1 +” | Quantity Selector |
+| Item do minicart | Product Card Horizontal Context=Minicart |
+| Abas “A / B” | Navigation/Segmented Control |
+| FAQ, descrição expansível | Navigation/Accordion Item |

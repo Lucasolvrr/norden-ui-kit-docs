@@ -1,0 +1,48 @@
+O Norden UI KIT é a base de interface que o time usa para começar qualquer e-commerce. Ele reúne, num arquivo do Figma, os fundamentos visuais (cores, tipografia, espaçamento, raios, sombras), os tokens que guardam essas decisões e os componentes mais usados numa loja: botões, cards de produto, preço, carrinho, filtros, busca, header, footer e outros.
+
+Esta documentação explica o que existe no kit, por que cada decisão foi tomada e como usar o kit com IA para adaptar a marca de um cliente e montar as telas do projeto sem perder consistência.
+
+<Callout kind="info" title="Como ler esta documentação">
+
+- Se você está começando, siga a ordem do menu lateral: Introdução, Como trabalhar com IA, Style Guide e Adaptar para uma nova marca.
+- Se já conhece o kit, use a busca (tecla <kbd>/</kbd> ou <kbd>Ctrl</kbd> + <kbd>K</kbd>) para ir direto ao tópico.
+- Os selos indicam a natureza de cada informação: <Badge kind="impl" /> existe no arquivo do Figma; <Badge kind="rec" /> é uma boa prática; <Badge kind="prop" /> é uma melhoria sugerida; <Badge kind="pend" /> precisa ser confirmada pelo time.
+
+</Callout>
+
+## O que o kit resolve
+
+Todo e-commerce precisa das mesmas peças: card de produto, preço com desconto, botão de compra, carrinho, busca, filtros. Sem uma base, cada projeto redesenha essas peças do zero, com pequenas diferenças que viram retrabalho, inconsistência e handoff demorado.
+
+- **Retrabalho:** o card de produto e o preço já existem com todas as variações (promoção, indisponível, minicart, carrinho, busca).
+- **Inconsistência:** cores, espaçamentos e raios vêm de tokens, então o mesmo papel tem sempre o mesmo valor.
+- **Troca de marca demorada:** a identidade do cliente entra editando valores, não redesenhando componentes.
+- **Handoff confuso:** nomes de tokens e propriedades seguem um padrão que o desenvolvimento consegue mapear.
+
+## Papel do Figma e papel da IA
+
+O Figma é a fonte de verdade: é lá que vivem as variáveis, os estilos e os componentes. A IA é uma assistente que lê essa fonte de verdade e executa tarefas repetitivas ou trabalhosas: aplicar a paleta de uma marca nos tokens, montar uma tela a partir de um wireframe, revisar se um arquivo usa tokens, documentar componentes.
+
+<Callout kind="warn" title="O objetivo não é gerar telas aleatórias">
+
+A IA só produz resultado consistente quando trabalha *dentro* do sistema: usando os componentes, tokens e regras que já existem. Uma imagem de referência sozinha não basta. Por isso esta documentação insiste em fornecer contexto, conferir o resultado e corrigir sem refazer.
+
+</Callout>
+
+## O que preservar e o que personalizar
+
+| Preservar em todo projeto | Personalizar por marca |
+| --- | --- |
+| Nomes de tokens, collections e componentes | Valores da collection **Brand** (cores, fontes, pesos) |
+| Estrutura dos componentes: variantes, propriedades e instâncias expostas | Preset de raio (collection **Shape**) |
+| Relação entre tokens: componente → token semântico → valor da marca | Margens e altura do header (collection **Responsive**) |
+| Regras de acessibilidade: contraste AA, texto de campo em 16px, áreas de toque | Logo, selos, formas de pagamento e ilustrações |
+| Ícones da biblioteca Phosphor | Pontos de ajuste documentados (ex.: preço em neutro, footer claro) |
+
+## Por onde começar
+
+1. Leia [Arquitetura do kit](/arquitetura) para entender as camadas.
+2. Leia [Como trabalhar com IA](/ia) antes de pedir qualquer coisa para uma ferramenta.
+3. Percorra o [Style Guide](/cores): cores, tipografia, espaçamento e tokens.
+4. Siga o tutorial [Adaptar para uma nova marca](/adaptar-marca) no seu primeiro projeto.
+5. Consulte os [Componentes](/componentes) e os [Padrões](/padroes) ao montar as telas.

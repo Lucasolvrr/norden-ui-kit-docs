@@ -1,0 +1,44 @@
+Tokens são variáveis com nome de função. Em vez de “#1C1C21”, o componente usa `text/primary`. Quando a marca muda, muda o valor; o nome e o componente continuam iguais.
+
+## Os quatro tipos de valor
+
+| Tipo | Onde fica no kit | Exemplo |
+| --- | --- | --- |
+| Primitivos | Primitives (oculta) e Brand | `radius/xl = 10`, `neutral/900 = #1C1C21` |
+| Semânticos | Color | `text/secondary → neutral/600` |
+| De componente | Color (grupos button/footer) e Shape | `background/button/primary/hover`, `radius/card` |
+| De ambiente e layout | Responsive, Dimension, Prototype | `layout/margin`, `size/control/md`, `cart/quantity` |
+
+## Como uma troca de marca se propaga
+
+<Flow>
+<FlowStep code="Brand / primary/default">#1C1C21 → #ED1D24</FlowStep>
+<FlowStep code="Color / background/button/primary/default">continua apontando para primary/default</FlowStep>
+<FlowStep code="Actions/Button Primary">fica vermelho em todas as telas</FlowStep>
+</Flow>
+
+Um único valor editado atualiza todos os botões, links, seleções e preços do arquivo.
+
+## Escopos
+
+Cada token semântico tem escopo: tokens de texto só aparecem no seletor de cor de texto, tokens de borda só no de contorno. As variáveis da Brand não têm escopo, para que ninguém as aplique direto em componentes. <Badge kind="impl" />
+
+## Quando criar um token novo
+
+- Quando uma função nova aparece em mais de um componente (ex.: os tokens `*/footer` nasceram com o footer escuro).
+- Quando um projeto precisa mudar o papel de uma cor sem afetar outras.
+- Nunca para um uso único que um token existente já resolve.
+
+<Prompt title="Propor um token novo sem quebrar o sistema">
+
+```
+Preciso de uma cor para o selo “Recomendado” (verde) no card de opção.
+Antes de criar qualquer coisa:
+1. Verifique se algum token existente já cumpre essa função
+   (ex.: background/success-subtle + text/success).
+2. Se nenhum servir, proponha o nome do token novo seguindo o
+   padrão funcao/detalhe, a collection, o valor apontado e o escopo.
+Não crie nada até eu aprovar.
+```
+
+</Prompt>

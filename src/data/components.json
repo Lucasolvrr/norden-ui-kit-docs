@@ -1,0 +1,317 @@
+{
+  "exportedAt": "2026-10-26",
+  "kitVersion": "0.4",
+  "components": [
+    {
+      "name": "Actions/Button",
+      "category": "Actions",
+      "variants": 27,
+      "properties": "Icon left:BOOLEAN; Icon left · icon:INSTANCE_SWAP; Icon right:BOOLEAN; Icon right · icon:INSTANCE_SWAP; Label:TEXT; Variant=[Primary|Secondary|Tertiary]; State=[Default|Hover|Disabled]; Size=[SM|MD|LG]",
+      "description": "Botão de ação. Primary para a ação principal, Secondary contornado, Tertiary só texto. Hover (desktop) escurece o tom. Size usa as alturas de controle (sm 40, md 48, lg 56). Ícones da Phosphor opcionais dos dois lados."
+    },
+    {
+      "name": "Actions/Icon Button",
+      "category": "Actions",
+      "variants": 36,
+      "properties": "Icon:INSTANCE_SWAP; Variant=[Primary|Secondary|Tertiary|Surface]; State=[Default|Hover|Disabled]; Size=[XS|SM|MD]",
+      "description": "Botão só com ícone: carrinho compacto, favoritar, lixeira, setas de carrossel, + e − da quantidade. Surface é o estilo para usar sobre imagens. Hover (desktop) escurece o tom ou a borda. Área de toque: xs 32, sm 40, md 48."
+    },
+    {
+      "name": "Actions/Favorite Button",
+      "category": "Actions",
+      "variants": 2,
+      "properties": "State=[Default|Active]",
+      "description": "Favoritar com estado ativo. Clique alterna entre Default e Active no protótipo. O tamanho e o estilo vêm do Icon Button aninhado (exposto no painel)."
+    },
+    {
+      "name": "Google",
+      "category": "Actions",
+      "variants": 1,
+      "properties": "Text:TEXT",
+      "description": ""
+    },
+    {
+      "name": "Facebook",
+      "category": "Actions",
+      "variants": 1,
+      "properties": "Text:TEXT",
+      "description": ""
+    },
+    {
+      "name": "CarouselControls",
+      "category": "Actions",
+      "variants": 1,
+      "properties": "",
+      "description": "Setas + paginação em pílula (padrão de vitrine)."
+    },
+    {
+      "name": "Commerce/Tag",
+      "category": "Commerce",
+      "variants": 10,
+      "properties": "Label:TEXT; Show icon:BOOLEAN; Icon:INSTANCE_SWAP; Type=[Promo|Discount|New|Neutral|Dark]; Size=[SM|MD]",
+      "description": "Tags e selos de produto. Type define o estilo: Promo (campanhas), Discount (percentual), New (lançamento), Neutral (informações, “Mais opções”) e Dark (indisponível, esgotado). Troque o Type direto no painel do card."
+    },
+    {
+      "name": "Commerce/Price Block",
+      "category": "Commerce",
+      "variants": 3,
+      "properties": "Price:TEXT; Old price:TEXT; Discount:TEXT; Suffix:TEXT; Installments:TEXT; Show old price:BOOLEAN; Show discount:BOOLEAN; Show suffix:BOOLEAN; Show Pix:BOOLEAN; Show installments:BOOLEAN; Size=[LG|MD|SM]",
+      "description": "Bloco de preço com linhas independentes: preço original + desconto, preço atual + sufixo, selo de Pix e parcelamento. Linhas ocultas não deixam espaço vazio. LG para PDP, MD para cards, SM para minicart, carrinho e busca."
+    },
+    {
+      "name": "Commerce/Quantity Selector",
+      "category": "Commerce",
+      "variants": 6,
+      "properties": "Value:TEXT; Size=[SM|MD]; State=[Default|Min|Disabled]",
+      "description": "Seletor de quantidade. SM (32px) para minicart e itens compactos; MD (40px) para carrinho e PDP. State=Min desabilita o “−” quando a quantidade está no mínimo."
+    },
+    {
+      "name": "Commerce/Product Card",
+      "category": "Commerce",
+      "variants": 9,
+      "properties": "Name:TEXT; Brand:TEXT; Show brand:BOOLEAN; Show options:BOOLEAN; State=[Default|Sale|Unavailable]; CTA=[Full|Compact|None]",
+      "description": "Card de produto vertical (vitrines, PLP e busca em grade). State: Default, Sale (preço original + desconto + tag de desconto) e Unavailable (sem preço, imagem esmaecida, CTA bloqueado). CTA: Full (botão de largura total), Compact (botão de ícone ao lado do preço) ou None. Imagem, tag, preço e botão são instâncias expostas."
+    },
+    {
+      "name": "Commerce/Product Card Horizontal",
+      "category": "Commerce",
+      "variants": 6,
+      "properties": "Name:TEXT; Show info tag:BOOLEAN; Context=[Minicart|Cart|Search]; State=[Default|Unavailable]",
+      "description": "Card horizontal. Context=Minicart (compacto, quantidade e remover no rodapé), Cart (mais espaço, informação adicional, quantidade e preço) e Search (resultado de busca, sem ações). State=Unavailable remove preço e quantidade e mostra a mensagem. Imagem, preço, quantidade e tag são instâncias expostas."
+    },
+    {
+      "name": "Commerce/Grocery Button",
+      "category": "Commerce",
+      "variants": 6,
+      "properties": "Quantity=[0|1|2+]; Size=[SM|MD]",
+      "description": "Botão de compra para grocery: ao clicar em Adicionar vira seletor de quantidade. Quantity=1 mostra a lixeira; Quantity=2+ mostra o “−” e o número vem da variável cart/quantity-label. No protótipo, + e − alteram a quantidade e o Cart Button acompanha."
+    },
+    {
+      "name": "Commerce/Cart Button",
+      "category": "Commerce",
+      "variants": 2,
+      "properties": "Icon:INSTANCE_SWAP; State=[Default|Hover]",
+      "description": "Botão do carrinho para o header. O número do badge vem de cart/quantity-label e a visibilidade de cart/has-items (collection Prototype)."
+    },
+    {
+      "name": "Brand/Logo",
+      "category": "Brand",
+      "variants": 2,
+      "properties": "Color=[Default|Inverse]",
+      "description": "Logo da marca. Para trocar: abra o componente principal, apague as camadas “replace”, cole o SVG da marca e defina as constraints como Scale. Inverse é a versão para fundos escuros."
+    },
+    {
+      "name": "Forms/Input",
+      "category": "Forms",
+      "variants": 6,
+      "properties": "Label:TEXT; Show label:BOOLEAN; Text:TEXT; Leading icon:BOOLEAN; Leading icon · icon:INSTANCE_SWAP; Trailing icon:BOOLEAN; Trailing icon · icon:INSTANCE_SWAP; Helper:TEXT; Show helper:BOOLEAN; Error message:TEXT; State=[Default|Hover|Filled|Success|Error|Disabled]",
+      "description": "Campo de texto. Busca = ícone à esquerda; senha = ícone à direita (olho). Hover só no desktop. Success e Error mostram o ícone de status; Error troca o texto de apoio pela mensagem de erro. Texto sempre em 16px."
+    },
+    {
+      "name": "Forms/Select",
+      "category": "Forms",
+      "variants": 6,
+      "properties": "Label:TEXT; Show label:BOOLEAN; Text:TEXT; Leading icon:BOOLEAN; Leading icon · icon:INSTANCE_SWAP; Helper:TEXT; Show helper:BOOLEAN; Error message:TEXT; State=[Default|Hover|Filled|Error|Disabled|Open]",
+      "description": "Lista de seleção (ordenação, tamanhos, formulários). Open mostra a lista sobreposta com elevation/2; os itens usam _Select Option. Texto sempre em 16px."
+    },
+    {
+      "name": "Forms/Checkbox",
+      "category": "Forms",
+      "variants": 2,
+      "properties": "State=[On|Off]",
+      "description": "Checkbox (caixa). Use ao lado de um texto ou dentro de listas de filtro. Clique alterna On/Off no protótipo."
+    },
+    {
+      "name": "Forms/Toggle",
+      "category": "Forms",
+      "variants": 2,
+      "properties": "State=[On|Off]",
+      "description": "Interruptor liga/desliga. Clique alterna On/Off no protótipo."
+    },
+    {
+      "name": "Forms/Chip",
+      "category": "Forms",
+      "variants": 8,
+      "properties": "Label:TEXT; Leading icon:BOOLEAN; Leading icon · icon:INSTANCE_SWAP; Show remove:BOOLEAN; State=[Default|Hover|Selected|Disabled]; Size=[SM|MD]",
+      "description": "Chip de seleção: ordenação, filtros ativos, tamanhos e categorias. Selected destaca a opção escolhida; Show remove adiciona o X para filtros aplicados. Clique alterna Default ↔ Selected no protótipo. Hover só no desktop."
+    },
+    {
+      "name": "Forms/Filter Item",
+      "category": "Forms",
+      "variants": 2,
+      "properties": "Label:TEXT; Count:TEXT; Show count:BOOLEAN; State=[Default|Active]",
+      "description": "Opção de filtro com checkbox. Default = desmarcada; Active = marcada (checkbox ativo e texto em destaque). Count opcional mostra a quantidade de produtos."
+    },
+    {
+      "name": "Navigation/Breadcrumb",
+      "category": "Navigation",
+      "variants": 1,
+      "properties": "Level 1:TEXT; Level 2:TEXT; Level 3:TEXT; Current:TEXT; Show level 2:BOOLEAN; Show level 3:BOOLEAN",
+      "description": "Breadcrumb com separador “/”. Níveis 2 e 3 são opcionais (cada um some junto com sua barra). O nível atual fica em destaque e é cortado com reticências quando não cabe."
+    },
+    {
+      "name": "Navigation/Text Link",
+      "category": "Navigation",
+      "variants": 1,
+      "properties": "Label:TEXT",
+      "description": "Link de texto simples para listas (footer, menu, conteúdo de accordion)."
+    },
+    {
+      "name": "Navigation/Accordion Item",
+      "category": "Navigation",
+      "variants": 2,
+      "properties": "Title:TEXT; Show divider:BOOLEAN; Content:INSTANCE_SWAP; State=[Closed|Open]",
+      "description": "Item de accordion. Clique no cabeçalho abre e fecha no protótipo. O conteúdo é um slot: troque por Accordion Content/Text, Accordion Content/Links ou qualquer componente seu."
+    },
+    {
+      "name": "Navigation/Menu Item",
+      "category": "Navigation",
+      "variants": 3,
+      "properties": "Label:TEXT; Show divider:BOOLEAN; Leading icon:BOOLEAN; Leading icon · icon:INSTANCE_SWAP; Type=[Link|Submenu|Back]",
+      "description": "Item do menu mobile. Link = vai direto para uma página. Submenu = abre o próximo nível (seta). Back = volta ao nível anterior e mostra o nome da categoria."
+    },
+    {
+      "name": "Navigation/Menu Shortcut",
+      "category": "Navigation",
+      "variants": 1,
+      "properties": "Label:TEXT; Icon:INSTANCE_SWAP; Show caret:BOOLEAN",
+      "description": "Atalho em pílula no topo do menu (conta, favoritos, pedidos)."
+    },
+    {
+      "name": "Navigation/Menu Header",
+      "category": "Navigation",
+      "variants": 1,
+      "properties": "",
+      "description": "Topo do menu mobile: logo (Brand/Logo) e botão fechar (fecha o overlay no protótipo)."
+    },
+    {
+      "name": "Navigation/Segmented Control",
+      "category": "Navigation",
+      "variants": 3,
+      "properties": "Show third:BOOLEAN; Active=[1|2|3]",
+      "description": "Alternância entre visões da mesma tela (ex.: pedidos em andamento / concluídos). Active define o item selecionado; Show third esconde o terceiro item."
+    },
+    {
+      "name": "Navigation/Bottom Nav",
+      "category": "Navigation",
+      "variants": 5,
+      "properties": "Active=[Home|Buscar|Carrinho|Listas|Conta]",
+      "description": ""
+    },
+    {
+      "name": "Navigation/Bottom Nav Item",
+      "category": "Navigation",
+      "variants": 4,
+      "properties": "Label:TEXT; Icon:INSTANCE_SWAP; Show badge:BOOLEAN; Badge:TEXT; Type=[Default|Highlight]; State=[Default|Active]",
+      "description": ""
+    },
+    {
+      "name": "Search/Search Bar",
+      "category": "Search",
+      "variants": 3,
+      "properties": "Text:TEXT; State=[Default|Focused|Typing]",
+      "description": "Campo de busca do header. Default (fechado), Focused (aberto, sem texto, com “Fechar”) e Typing (com texto, botão limpar e “Fechar”). Texto em 16px."
+    },
+    {
+      "name": "Search/Search Term",
+      "category": "Search",
+      "variants": 1,
+      "properties": "Rank:TEXT; Term:TEXT; Show rank:BOOLEAN",
+      "description": "Termo de busca (mais buscados ou sugestão). Show rank exibe a posição."
+    },
+    {
+      "name": "Search/Search Panel",
+      "category": "Search",
+      "variants": 3,
+      "properties": "State=[Suggestions|Results|No results]",
+      "description": "Painel da busca, exibido abaixo do Search Bar. Suggestions = campo vazio; Results = digitando (sugestões + produtos com Product Card Horizontal Context=Search); No results = nenhum produto encontrado."
+    },
+    {
+      "name": "Header",
+      "category": "Layout",
+      "variants": 3,
+      "properties": "Menu:INSTANCE_SWAP; Show Nav:BOOLEAN; Show Searchbar:BOOLEAN; Show Menu:BOOLEAN; showAppBar:BOOLEAN; State=[LoggedIn|State2|State3]",
+      "description": "Header mobile. Logo = instância de Brand/Logo; carrinho = Commerce/Cart Button; menu = slot à esquerda (instance swap, padrão Icon Button com ícone de lista)."
+    },
+    {
+      "name": "Footer/Footer",
+      "category": "Layout",
+      "variants": 2,
+      "properties": "Show newsletter:BOOLEAN; Show app:BOOLEAN; Legal text:TEXT; Copyright:TEXT; Device=[Mobile|Desktop]",
+      "description": "Footer completo. Device=Mobile usa os grupos de links em accordion; Device=Desktop usa colunas. Newsletter, logo, app, redes sociais, selos, formas de pagamento, dados legais, copyright e crédito da agência são peças separadas e trocáveis. As cores vêm dos tokens */footer."
+    },
+    {
+      "name": "Footer/Link Group",
+      "category": "Layout",
+      "variants": 3,
+      "properties": "Title:TEXT; Links:INSTANCE_SWAP; Device=[Desktop|Mobile]; State=[Open|Closed]",
+      "description": "Grupo de links do footer. Desktop = coluna com título e links. Mobile = accordion. Links é um slot."
+    },
+    {
+      "name": "Footer/Link",
+      "category": "Layout",
+      "variants": 1,
+      "properties": "Label:TEXT",
+      "description": ""
+    },
+    {
+      "name": "Footer/Social Link",
+      "category": "Layout",
+      "variants": 1,
+      "properties": "Icon:INSTANCE_SWAP",
+      "description": "Link de rede social. Troque o ícone (Phosphor) pelo painel."
+    },
+    {
+      "name": "Footer/Seals",
+      "category": "Layout",
+      "variants": 1,
+      "properties": "",
+      "description": "Certificados e selos de segurança (inclui o selo PCI da VTEX). Troque as imagens pelos selos oficiais do projeto."
+    },
+    {
+      "name": "Footer/Payment Methods",
+      "category": "Layout",
+      "variants": 1,
+      "properties": "",
+      "description": "Formas de pagamento com os logotipos oficiais. Não redesenhe as marcas: substitua pelos SVGs oficiais do projeto."
+    },
+    {
+      "name": "Footer/App Badges",
+      "category": "Layout",
+      "variants": 1,
+      "properties": "",
+      "description": "Botões de download do app (App Store e Google Play)."
+    },
+    {
+      "name": "Footer/Agency Credit",
+      "category": "Layout",
+      "variants": 1,
+      "properties": "",
+      "description": "Identificação da agência e plataforma."
+    },
+    {
+      "name": "Marketing/Newsletter",
+      "category": "Layout",
+      "variants": 4,
+      "properties": "Title:TEXT; Description:TEXT; Consent:TEXT; Success title:TEXT; Success message:TEXT; Layout=[Stacked|Inline]; State=[Default|Sent]",
+      "description": "Newsletter independente: use no footer ou em qualquer seção. Layout Stacked (mobile) ou Inline (desktop). State=Sent é a confirmação após o envio."
+    },
+    {
+      "name": "Feedback/Toast",
+      "category": "Feedback",
+      "variants": 4,
+      "properties": "Title:TEXT; Message:TEXT; Show message:BOOLEAN; Show close:BOOLEAN; Show progress:BOOLEAN; Type=[Success|Error|Warning|Info]",
+      "description": "Toast com barra de progresso no topo (tempo restante até sumir). Type define cor e ícone."
+    }
+  ],
+  "legacy": [
+    "Button (referência antiga de botões)",
+    "Slider",
+    "Filters (Drawer)",
+    "Icon Button / Favorite",
+    "angulo-direito (1) 2",
+    "Text Field (página Layout Mobile)",
+    "Filtros Departamento / Simples / Preço (página Layout Mobile, ainda fora da página Componentes)",
+    "Faixa de benefícios, Faixa de Brinde, Faixa de Frete Grátis (página Layout Mobile, sem descrição)"
+  ]
+}

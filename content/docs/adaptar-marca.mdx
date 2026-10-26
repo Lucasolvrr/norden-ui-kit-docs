@@ -1,0 +1,280 @@
+Este tutorial leva você do kit base até uma cópia com a identidade do cliente, pronta para receber as telas. Cada etapa tem objetivo, contexto, instruções no Figma, erros comuns, critérios de validação e um prompt pronto.
+
+<Callout kind="info" title="Antes de começar">
+
+- Duplique o arquivo base e renomeie para “Norden UI KIT — \[Cliente\]”. O arquivo base nunca é editado por um projeto.
+- Reúna o material de marca: manual, logo em SVG, fontes, site atual e, se houver, o wireframe.
+- Tenha em mãos a [skill geral](/skill) para colar no início da conversa com a IA.
+
+</Callout>
+
+<Steps>
+
+<Step title="Analisar o material de marca">
+
+<Details>
+<Detail term="Objetivo">Entender a identidade antes de mexer em qualquer valor.</Detail>
+<Detail term="Contexto necessário">Manual de marca, site atual, logo, fontes.</Detail>
+<Detail term="No Figma">Nada ainda. Separe as referências numa página de trabalho, se quiser.</Detail>
+<Detail term="Erros comuns">Tratar cores de rascunho do wireframe (cinzas, azul padrão de ferramenta) como cores da marca.</Detail>
+<Detail term="Como validar">Você consegue listar as cores oficiais, a fonte e o estilo de cantos da marca.</Detail>
+</Details>
+
+<Prompt title="Analisar a marca sem alterar nada">
+
+```
+## Tarefa
+Analise o material de marca anexo (manual, prints do site, logo).
+Não altere nenhum arquivo.
+
+## O que eu preciso de volta
+1. Cores oficiais (hex) e onde cada uma aparece.
+2. Fonte(s) e pesos usados.
+3. Estilo de cantos (retos, levemente arredondados, pílula).
+4. O que estiver ausente ou ambíguo, marcado como “não encontrado”.
+Não invente valores.
+```
+
+</Prompt>
+
+</Step>
+
+<Step title="Identificar cores, tipografia e diretrizes">
+
+<Details>
+<Detail term="Objetivo">Classificar o que foi encontrado nos papéis do kit.</Detail>
+<Detail term="Contexto necessário">Resultado da etapa 1.</Detail>
+<Detail term="No Figma">Nada ainda.</Detail>
+<Detail term="Erros comuns">Forçar três cores quando a marca tem uma. Nesse caso, secondary pode ser um tom escuro neutro.</Detail>
+<Detail term="Como validar">Cada cor da marca tem um papel: primary, secondary ou accent.</Detail>
+</Details>
+
+<Prompt title="Classificar as cores nos papéis do kit">
+
+```
+Com base na análise anterior, classifique as cores da marca nos
+papéis do Norden UI KIT:
+- primary: cor de ação e identidade (botões, links, seleção)
+- secondary: segunda cor institucional (faixas, fundos de apoio)
+- accent: destaque comercial (promoção, desconto)
+Explique a escolha de cada uma. Se a marca tiver menos de três
+cores, diga o que sugere para o papel vazio e por quê.
+```
+
+</Prompt>
+
+</Step>
+
+<Step title="Mapear diferenças com o Style Guide">
+
+<Details>
+<Detail term="Objetivo">Saber o que muda e o que fica.</Detail>
+<Detail term="Contexto necessário">Collections Brand, Color e Shape da cópia.</Detail>
+<Detail term="No Figma">Abra Local variables e compare com as cores e fontes levantadas.</Detail>
+<Detail term="Erros comuns">Querer mudar tokens semânticos antes da Brand.</Detail>
+<Detail term="Como validar">Você tem uma lista do que muda na Brand e de quais pontos de ajuste podem ser necessários.</Detail>
+</Details>
+
+<Prompt title="Mapear o que muda no kit">
+
+```
+Inspecione a cópia do kit [link]: collections Brand, Color e Shape.
+Compare com a análise da marca e liste:
+1. Variáveis da Brand que mudam (valor atual → novo).
+2. Variáveis que ficam como estão.
+3. Pontos de ajuste que podem ser necessários
+   (preço em neutro, promoções em verde, footer claro).
+Não altere nada.
+```
+
+</Prompt>
+
+</Step>
+
+<Step title="Definir a paleta e as funções">
+
+<Details>
+<Detail term="Objetivo">Gerar os cinco papéis de cada cor (default, hover, subtle, text, on-color) e escolher os neutros.</Detail>
+<Detail term="Contexto necessário">Cores classificadas na etapa 2.</Detail>
+<Detail term="No Figma">Use o [simulador](/cores) ou o script de paleta da skill para gerar os valores.</Detail>
+<Detail term="Erros comuns">Usar a cor da marca como texto sem checar contraste; hover mais claro que o default.</Detail>
+<Detail term="Como validar">Todos os pares críticos com AA ou com a exceção documentada.</Detail>
+</Details>
+
+<Prompt title="Gerar os papéis de cada cor">
+
+```
+Para cada cor (primary, secondary, accent), gere os papéis do kit:
+- default: a cor oficial
+- hover: mais escura que o default
+- subtle: a cor misturada com ~92% de branco
+- text: versão com contraste 4,5:1 sobre branco e sobre o subtle
+- on-color: branco ou neutro escuro, o de maior contraste com o default
+Escolha também a escala de neutros (fria, quente ou neutra),
+garantindo neutral/500 com 4,5:1 sobre branco e sobre neutral/50.
+Mostre uma tabela com os valores e o contraste de cada par.
+```
+
+</Prompt>
+
+</Step>
+
+<Step title="Adaptar tipografia e fundamentos">
+
+<Details>
+<Detail term="Objetivo">Configurar fonte, pesos, raio e layout.</Detail>
+<Detail term="Contexto necessário">Fonte da marca disponível no Figma do time.</Detail>
+<Detail term="No Figma">Brand: `font/family/*` e `font/weight/*`. Shape: escolha o preset e apague os outros modes. Responsive: margens e altura do header.</Detail>
+<Detail term="Erros comuns">Fonte instalada só num computador; nome do peso escrito errado; ajustar raio em cada componente.</Detail>
+<Detail term="Como validar">Os text styles mostram a fonte nova; botões e campos têm o raio do preset.</Detail>
+</Details>
+
+<Prompt title="Configurar fonte e raio">
+
+```
+Na cópia do kit [link]:
+1. Confirme que a fonte “[Nome]” está disponível no Figma.
+   Se não estiver, pare e me avise.
+2. Atualize font/family/heading e font/family/body.
+3. Atualize font/weight/* com os nomes exatos dos estilos da fonte.
+4. Na collection Shape, mantenha só o mode “[preset]” e apague os outros.
+Mostre um print de Button, Input e Product Card depois.
+```
+
+</Prompt>
+
+</Step>
+
+<Step title="Atualizar variáveis e estilos">
+
+<Details>
+<Detail term="Objetivo">Aplicar os valores na collection Brand.</Detail>
+<Detail term="Contexto necessário">Tabela da etapa 4 aprovada.</Detail>
+<Detail term="No Figma">Local variables › Brand: edite os valores. Não renomeie nem apague variáveis.</Detail>
+<Detail term="Erros comuns">Editar tokens da Color em vez da Brand; criar variáveis novas sem necessidade.</Detail>
+<Detail term="Como validar">Nenhum nome mudou; só valores.</Detail>
+</Details>
+
+<Prompt title="Aplicar a paleta na Brand">
+
+```
+Aplique na collection Brand da cópia [link] exatamente os valores
+da tabela aprovada. Regras:
+- Só altere valores. Não renomeie, não apague, não crie variáveis.
+- Não altere feedback/* (sucesso, atenção, erro, informação)
+  a menos que eu peça.
+Ao final, liste cada variável alterada com valor antigo e novo.
+```
+
+</Prompt>
+
+</Step>
+
+<Step title="Validar contraste e hierarquia">
+
+<Details>
+<Detail term="Objetivo">Garantir legibilidade e que a ação principal se destaca.</Detail>
+<Detail term="Contexto necessário">Valores aplicados.</Detail>
+<Detail term="No Figma">Confira os pares: primary/on-color × primary/default; primary/text × branco; neutral/500 × branco e × neutral/50; accent/on-color × accent/default.</Detail>
+<Detail term="Erros comuns">Aceitar contraste baixo sem registrar a decisão.</Detail>
+<Detail term="Como validar">Pares com 4,5:1 ou exceção documentada na página Começe por aqui.</Detail>
+</Details>
+
+<Prompt title="Checar contraste">
+
+```
+Calcule o contraste dos pares abaixo na cópia [link] e marque
+os que ficam abaixo de 4,5:1:
+- primary/on-color sobre primary/default
+- primary/text sobre branco e sobre primary/subtle
+- neutral/500 sobre branco e sobre neutral/50
+- accent/on-color sobre accent/default
+Para cada falha, proponha uma correção que preserve a marca.
+```
+
+</Prompt>
+
+</Step>
+
+<Step title="Verificar os componentes">
+
+<Details>
+<Detail term="Objetivo">Confirmar que tudo continua funcionando com a nova marca.</Detail>
+<Detail term="Contexto necessário">Página Componentes da cópia.</Detail>
+<Detail term="No Figma">Percorra Button, Tag, Price Block, Product Card, Input, Header e Footer.</Detail>
+<Detail term="Erros comuns">Olhar só o botão primário.</Detail>
+<Detail term="Como validar">Nenhum componente com cor sem token, texto ilegível ou hierarquia invertida.</Detail>
+</Details>
+
+<Prompt title="Revisar componentes depois da troca">
+
+```
+Na página Componentes da cópia [link], tire prints de:
+Actions/Button, Commerce/Tag, Commerce/Price Block,
+Commerce/Product Card, Forms/Input, Header e Footer/Footer.
+Aponte qualquer problema de contraste, cor fora de token
+ou elemento que ficou com a cor errada para a função.
+```
+
+</Prompt>
+
+</Step>
+
+<Step title="Identificar adaptações específicas">
+
+<Details>
+<Detail term="Objetivo">Decidir os pontos de ajuste da marca.</Detail>
+<Detail term="Contexto necessário">Estratégia comercial do cliente.</Detail>
+<Detail term="No Figma">Reaponte tokens semânticos só quando a estratégia pedir: `commerce/price → neutral/900`; `commerce/promo-* → feedback/success/*`; tokens `*/footer` para footer claro.</Detail>
+<Detail term="Erros comuns">Criar componentes novos para resolver o que um token resolve.</Detail>
+<Detail term="Como validar">Cada ajuste está registrado com o motivo.</Detail>
+</Details>
+
+<Prompt title="Avaliar pontos de ajuste">
+
+```
+Considerando a marca e o site atual do cliente, avalie se o projeto
+precisa destes ajustes e justifique cada um:
+1. Preço em neutro em vez da cor da marca.
+2. Promoções em verde ou vermelho.
+3. CTA de compra na cor secundária.
+4. Footer claro.
+Não aplique nada; só recomende.
+```
+
+</Prompt>
+
+</Step>
+
+<Step title="Validar antes de construir páginas">
+
+<Details>
+<Detail term="Objetivo">Fechar a base antes de começar as telas.</Detail>
+<Detail term="Contexto necessário">Todas as etapas anteriores.</Detail>
+<Detail term="No Figma">Atualize a página Começe por aqui da cópia: nome do projeto, versão, data e decisões.</Detail>
+<Detail term="Erros comuns">Começar telas com a base pela metade e corrigir depois em todo lugar.</Detail>
+<Detail term="Como validar">Checklist completo e decisões documentadas.</Detail>
+</Details>
+
+<Prompt title="Checklist final da base">
+
+```
+Revise a cópia [link] e confirme item por item:
+- Brand com as cores e fontes aprovadas
+- Um único mode em Shape
+- Layout ajustado (margens e altura do header)
+- Logo, selos e formas de pagamento trocados
+- Nenhuma cor sem variável nos componentes
+- Contraste verificado e exceções registradas
+Responda com OK ou PENDENTE para cada item.
+```
+
+</Prompt>
+
+</Step>
+
+</Steps>
+
+## Quando a ferramenta não edita o Figma
+
+Se a IA só analisa imagens ou gera código, use os mesmos prompts pedindo uma **tabela de valores** como resultado, e aplique você mesmo em Local variables. Para geração de código, peça que os tokens virem variáveis CSS com o mesmo nome (ex.: `--color-text-primary`).

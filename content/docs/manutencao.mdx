@@ -1,0 +1,59 @@
+Esta documentação acompanha o kit. Esta página explica de onde vêm as informações, como atualizar e como revisar antes de publicar.
+
+## Fontes de verdade
+
+| Informação | Fonte | Como esta documentação obtém |
+| --- | --- | --- |
+| Variáveis e valores | Arquivo Norden UI KIT no Figma (Local variables) | Exportação manual, feita por IA com acesso ao Figma. |
+| Componentes, variantes e propriedades | Página Componentes do arquivo | Exportação manual do inventário. |
+| Descrição de cada componente | Campo Component information | Copiada na exportação. É a fonte principal da seção “Visão geral” de cada componente. |
+| Versão e changelog | Página Começe por aqui | Copiada a cada versão. |
+| Decisões de design | Conversas e revisões do time | Registradas aqui com a data e o selo correspondente. |
+
+Última exportação do Figma: **26/10/2026**. Não existe sincronização automática: os dados são atualizados pelo processo abaixo. <Badge kind="impl" />
+
+## Processo de atualização
+
+1. Uma mudança é feita no kit (componente novo, token, regra).
+2. A descrição do componente é preenchida no Figma (regra obrigatória).
+3. Uma IA com acesso ao Figma exporta variáveis e inventário e compara com a versão anterior.
+4. As páginas afetadas são atualizadas e marcadas como “em revisão”.
+5. Alguém do time revisa e aprova.
+6. O changelog recebe a entrada com versão e data.
+
+O texto desta documentação fica em arquivos MDX no repositório do GitHub, e os dados do Figma em arquivos JSON. Cada mudança entra por pull request, que é onde acontece a revisão do time antes de publicar. <Badge kind="rec" />
+
+<Prompt title="Detectar mudanças no kit desde a última exportação">
+
+```
+Exporte do arquivo Norden UI KIT [link]:
+- todas as variáveis (nome, valor, alias, descrição)
+- todos os componentes (nome, variantes, propriedades, descrição)
+Compare com a exportação anterior (anexa) e liste:
+1. O que foi adicionado.
+2. O que foi removido ou renomeado.
+3. Valores alterados.
+4. Componentes sem descrição.
+Não altere o Figma.
+```
+
+</Prompt>
+
+## Selos de status
+
+| Selo | Significado |
+| --- | --- |
+| <Badge kind="impl" /> | Existe no arquivo do Figma e foi conferido na última exportação. |
+| <Badge kind="rec" /> | Boa prática recomendada; não está imposta pelo arquivo. |
+| <Badge kind="prop" /> | Melhoria sugerida ou no backlog; ainda não existe. |
+| <Badge kind="pend" /> | Informação que o time precisa confirmar. |
+
+## Pendências conhecidas
+
+- Componentes sem descrição no Figma: Google, Facebook, Navigation/Bottom Nav, Navigation/Bottom Nav Item e Footer/Link (backlog C43).
+- Referências antigas ainda na página Componentes ou fora dela: Button (referência antiga de botões), Slider, Filters (Drawer), Icon Button / Favorite, angulo-direito (1) 2, Text Field (página Layout Mobile), Filtros Departamento / Simples / Preço (página Layout Mobile, ainda fora da página Componentes), Faixa de benefícios, Faixa de Brinde, Faixa de Frete Grátis (página Layout Mobile, sem descrição).
+- Ausentes no kit: Radio, Textarea, padrão de PDP, checkout, estados vazios e de carregamento.
+- Versões desktop dos componentes e telas; proposta de alternar mobile/desktop só redimensionando o frame (backlog C36).
+- `layout/header-padding-top` provisório; grid de colunas e largura máxima no desktop não definidos.
+- Política de foco por teclado nos botões (o estilo `focus-ring` existe, mas não é usado).
+- Ferramentas de IA aprovadas e permissões de edição do arquivo base.

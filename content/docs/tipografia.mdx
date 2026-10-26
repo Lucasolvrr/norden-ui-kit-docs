@@ -1,0 +1,60 @@
+A tipografia define a ordem de leitura de cada tela: o que é título, o que é preço, o que é informação de apoio. No kit, a família e os pesos vêm de variáveis, e os tamanhos dos títulos mudam com o breakpoint.
+
+## Família e pesos
+
+| Variável (Brand) | Valor no kit base | Observação |
+| --- | --- | --- |
+| `font/family/heading` | Rethink Sans | Títulos (Display e Heading). |
+| `font/family/body` | Rethink Sans | Corpo, labels, botões e preços. |
+| `font/weight/regular · medium · semibold · bold` | Regular · Medium · Semi Bold · Bold | O nome do peso muda entre fontes (“Semi Bold”, “SemiBold”, “Demi”). Escreva exatamente como aparece no Figma. |
+
+<Callout kind="warn" title="Fonte da marca precisa estar disponível">
+
+Se a fonte do cliente estiver instalada só no computador de um designer, outras pessoas e ferramentas de IA não conseguem usá-la. Isso aconteceu no projeto Stok com a D-DIN-PRO: a IA precisou trocar a fonte para Roboto temporariamente para criar textos. Antes de trocar a fonte do kit, confirme que ela está disponível para o time.
+
+</Callout>
+
+## Escala
+
+| Estilo | Tamanho (px) | Altura de linha | Pesos | Uso | Amostra |
+| --- | --- | --- | --- | --- | --- |
+| `Display/Large` | 36 → 56 | 44 → 64 | Regular, Medium, SemiBold, Bold | Hero e banners. | <TypeSample size={30} weight={700}>Arroz tipo 1</TypeSample> |
+| `Display/Medium` | 32 → 44 | 40 → 52 | Regular, Medium, SemiBold, Bold | Títulos de campanha. | <TypeSample size={30} weight={700}>Arroz tipo 1</TypeSample> |
+| `Heading/H1` | 28 → 40 | 36 → 48 | Regular, Medium, SemiBold, Bold | Título da página (PLP, PDP, carrinho). | <TypeSample size={22} weight={600}>Arroz tipo 1</TypeSample> |
+| `Heading/H2` | 24 → 32 | 32 → 40 | Regular, Medium, SemiBold, Bold | Título de seção e vitrine. | <TypeSample size={22} weight={600}>Arroz tipo 1</TypeSample> |
+| `Heading/H3` | 20 → 24 | 28 → 32 | Regular, Medium, SemiBold, Bold | Subtítulo, título de card de conteúdo e de drawer. | <TypeSample size={22} weight={600}>Arroz tipo 1</TypeSample> |
+| `Heading/H4` | 18 → 20 | 26 → 28 | Regular, Medium, SemiBold, Bold | Títulos pequenos, cabeçalhos de accordion. | <TypeSample size={22} weight={600}>Arroz tipo 1</TypeSample> |
+| `Body/Large` | 18 | 28 | Regular, Medium, SemiBold, Bold | Textos de destaque e introduções. | <TypeSample size={16} weight={400}>Arroz tipo 1</TypeSample> |
+| `Body/Medium` | 16 | 24 | Regular, Medium, SemiBold, Bold | Corpo padrão e texto de campos (sempre 16px). | <TypeSample size={16} weight={400}>Arroz tipo 1</TypeSample> |
+| `Body/Small` | 14 | 20 | Regular, Medium, SemiBold, Bold | Nome de produto no card, descrições curtas. | <TypeSample size={16} weight={400}>Arroz tipo 1</TypeSample> |
+| `Label/Large · Medium · Small` | 16 · 14 · 12 | 24 · 20 · 16 | Regular, Medium, SemiBold, Bold | Rótulos de campos, abas e filtros. | <TypeSample size={16} weight={600}>Arroz tipo 1</TypeSample> |
+| `Caption` | 12 | 16 | Regular, Medium, SemiBold, Bold | Legendas, contadores, textos legais. | <TypeSample size={16} weight={400}>Arroz tipo 1</TypeSample> |
+| `Overline` | 12 | 16 | Regular, Medium, SemiBold, Bold | Rótulos em caixa alta (títulos de grupo do footer). | <TypeSample size={16} weight={600} uppercase>Institucional</TypeSample> |
+| `Button/Large · Medium · Small` | 18 · 16 · 14 | 24 · 24 · 20 | Regular, Medium, SemiBold, Bold | Labels de botão por tamanho. | <TypeSample size={16} weight={600}>Adicionar</TypeSample> |
+| `Price/Large` | 24 → 28 | 32 → 36 | Regular, Medium, SemiBold, Bold | Preço da PDP. | <TypeSample size={20} weight={700}>R$ 129,90</TypeSample> |
+| `Price/Medium` | 18 | 24 | Regular, Medium, SemiBold, Bold | Preço no card. | <TypeSample size={20} weight={700}>R$ 129,90</TypeSample> |
+| `Price/Small` | 14 | 20 | Regular, Medium, SemiBold, Bold | Preço no minicart, carrinho e busca. | <TypeSample size={20} weight={700}>R$ 129,90</TypeSample> |
+| `Price/Old` | 12 | 16 | Regular, Medium, SemiBold, Bold | Preço riscado (já vem com tachado). | <TypeSample size={20} weight={700} strike>R$ 129,90</TypeSample> |
+
+Onde aparece “→”, o valor muda do mobile para o desktop por meio da collection Responsive. Um frame de tela no mode Mobile renderiza os títulos menores automaticamente. <Badge kind="impl" />
+
+## Nome dos estilos
+
+Formato `Grupo/Tamanho/Peso · tamanho/altura`, por exemplo `Body/Medium/Regular · 16/24`. O sufixo numérico ajuda a escolher o estilo sem abrir o painel.
+
+## Hierarquia no e-commerce
+
+| Tela | Como a tipografia organiza |
+| --- | --- |
+| Card de produto | Nome em Body/Small (até 2 linhas), preço em Price/Medium, preço riscado em Price/Old, parcelamento em Caption. |
+| PDP | Nome em Heading/H1, preço em Price/Large, descrições em Body/Medium. |
+| Carrinho e minicart | Nomes em Body/Small, preços em Price/Small, total em destaque com peso maior. |
+| Checkout | Labels de campos em Label/Medium e texto digitado em Body/Medium (16px). |
+| Menu e footer | Itens em Body/Medium, títulos de grupo em Overline ou Caption/SemiBold. |
+
+## Erros comuns
+
+- Campo de formulário com texto menor que 16px: o iOS dá zoom na página ao focar.
+- Muitos pesos na mesma tela: escolha no máximo dois por bloco.
+- Usar Display em telas mobile densas: reserve para banners.
+- Escrever o nome do peso errado na variável (a fonte “quebra” e o Figma mostra fonte ausente).

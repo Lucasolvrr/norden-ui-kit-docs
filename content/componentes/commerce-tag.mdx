@@ -1,0 +1,68 @@
+## Por que existe
+
+Selos comunicam promoção, novidade e indisponibilidade antes do preço. Padronizar os tipos evita que cada projeto invente cores para a mesma mensagem.
+
+## Decisões a preservar
+
+- Cinco tipos fixos, cada um com função: Promo, Discount, New, Neutral, Dark.
+- Promo e Discount usam os tokens `commerce/*`, que apontam para a cor accent.
+- Dark é reservado para indisponível/esgotado.
+
+## Anatomia
+
+1. Container com raio `radius/tag` e padding pequeno (`spacing/2`–`8`).
+2. Ícone opcional (Show icon + Icon).
+3. Label.
+
+## Tokens e estilos
+
+- `commerce/promo-background`, `commerce/promo-content`
+- `commerce/discount`
+- `radius/tag`
+
+## Quando usar
+
+- Discount: percentual (“-15%”).
+- Promo: campanha (“Frete grátis”, “Pontos em dobro”).
+- New: lançamento.
+- Neutral: informação (“Mais opções”).
+- Dark: indisponível.
+
+### Quando evitar
+
+- Mais de duas tags no mesmo card.
+- Tag com frase longa: use texto de apoio no card.
+- Criar cor nova para uma campanha sem token.
+
+## Acessibilidade
+
+- Texto da tag com contraste AA sobre o fundo dela.
+- Não comunicar só por cor: o texto da tag precisa ser claro sozinho.
+
+## Erros comuns
+
+- Pintar a tag por override para “combinar” com uma campanha.
+- Usar Discount para campanhas sem percentual.
+
+## Com IA
+
+<Prompt title="Adicionar um tipo de tag para campanha da marca">
+
+```
+O cliente tem uma campanha recorrente (“Mais por menos”) com cor
+própria (azul #1F31A1). No Commerce/Tag do arquivo [link]:
+1. Proponha tokens novos para o fundo e o texto dessa tag
+   (ex.: commerce/campaign-background e commerce/campaign-content),
+   apontando para variáveis novas da Brand.
+2. Adicione Type=Campaign nos tamanhos SM e MD, ligado a esses tokens.
+3. Atualize a descrição do componente.
+Não altere os tipos existentes. Mostre o plano antes.
+```
+
+</Prompt>
+
+## Como validar
+
+- Cada tipo usa tokens, nunca hex.
+- Label editável.
+- Contraste AA em todos os tipos.
