@@ -55,11 +55,12 @@ function Snippet({ entry, terms }: { entry: Indexed; terms: string[] }) {
 
 export function SearchDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (o: boolean) => void }) {
   const router = useRouter();
-  const [index, setIndex] = useState<Indexed[]>([]);
+  const [index, setIndex] = useState<Indexed[] | null>(null);
   const [query, setQuery] = useState("");
 
+  // Carrega o índice logo após a página abrir, para a busca já estar pronta no primeiro uso.
   useEffect(() => {
-    if (open) loadIndex().then(setIndex);
+    loadIndex().then(setIndex);
   }, [open]);
 
   const handleOpenChange = (o: boolean) => {
@@ -69,6 +70,7 @@ export function SearchDialog({ open, onOpenChange }: { open: boolean; onOpenChan
 
   const terms = useMemo(() => norm(query).split(/\s+/).filter(Boolean), [query]);
   const results = useMemo(() => {
+    if (!index) return [];
     if (!terms.length) return SUGGESTED.map((h) => index.find((e) => e.href === h)).filter((e): e is Indexed => !!e);
     return index
       .filter((e) => terms.every((t) => e.n.includes(t) || e.nt.includes(t)))
@@ -89,7 +91,9 @@ export function SearchDialog({ open, onOpenChange }: { open: boolean; onOpenChan
       <Command shouldFilter={false}>
         <CommandInput placeholder="Buscar componentes, tokens, prompts…" value={query} onValueChange={setQuery} />
         <CommandList className="max-h-[60vh]">
-          <CommandEmpty>Nada encontrado. Tente outro termo, como “preço”, “token” ou “prompt”.</CommandEmpty>
+          <CommandEmpty>
+            {index ? "Nada encontrado. Tente outro termo, como “preço”, “token” ou “prompt”." : "Carregando…"}
+          </CommandEmpty>
           {results.map((e) => (
             <CommandItem
               key={e.href}
